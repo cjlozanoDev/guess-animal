@@ -1,0 +1,14 @@
+:root {
+  /* colors */
+  --primary: #78FFA4;
+  /* sizes */
+  --screen-xs: 375px;
+  --screen-sm: 768px;
+  --screen-md: 992px;
+  --screen-lg: 1140px;
+  --screen-xlg: 1900px;
+
+  /* paddings */
+  --padding-s: 1.4rem;
+  --padding-m: 2.4rem;
+  }
