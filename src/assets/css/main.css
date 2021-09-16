@@ -1,10 +1,18 @@
 @import './utils/variables.css';
 
-* { box-sizing: border-box; }
+@font-face {
+  font-family: "Unkempt";
+  src: local("Unkempt"), url(../../fonts/Unkempt.ttf) format("truetype");
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Unkempt", "Graphik", "Arial", "sans-serif";
+}
 
 html {
   height: 100%;
-  font-family: 'Graphik', Arial, sans-serif;
+  font-size: 1.2em;
 }
 
 body {
@@ -12,3 +20,20 @@ body {
   background: url(../images/wallpaper.png);
   background-size: 50%;
 }
+
+.input-guess-animal,
+.button-guess-animal {
+  height: 40px;
+  font-size: 0.8em;
+}
+.button-guess-animal {
+  background-color: var(--primary);
+  border: 2px solid var(--secundary);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 1.5em;
+  }
+} 

@@ -1,6 +1,8 @@
 :root {
   /* colors */
   --primary: #78FFA4;
+  --secundary: #804000;
+
   /* sizes */
   --screen-xs: 375px;
   --screen-sm: 768px;

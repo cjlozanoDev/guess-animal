@@ -18,13 +18,19 @@
           jugar.
         </p>
         <p>Escribe tu nombre aquí debajo</p>
-        <div>
+        <div class="home__actions">
           <input
-            class="input-text"
+            class="input-guess-animal"
             type="text"
+            v-model="playerName"
             placeholder="Escribe tu nombre"
           />
-          <button class="button__start">EMPEZAR A JUGAR</button>
+          <button @click="startPlay" class="button-guess-animal">
+            <span> EMPEZAR A JUGAR </span>
+          </button>
+        </div>
+        <div v-if="nameEmpty" class="home__error">
+          <p>Para poder jugar, tienes que escribir tu nombre</p>
         </div>
       </div>
     </div>
@@ -36,6 +42,22 @@
 
 export default {
   name: "Home",
+  data() {
+    return {
+      playerName: "",
+      tryPlay: false,
+    };
+  },
+  computed: {
+    nameEmpty() {
+      return this.playerName === "" && this.tryPlay;
+    },
+  },
+  methods: {
+    startPlay() {
+      this.tryPlay = true;
+    },
+  },
 };
 </script>
 
@@ -46,21 +68,24 @@ export default {
   align-items: center;
   height: 100vh;
 }
+.home__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .home__principal__box {
   text-align: center;
   background-color: #fff;
+  border: 2px solid var(--secundary);
   padding: 20px;
   width: 95%;
 }
 .home__principal__box__title {
   font-size: 2em;
 }
-.input-text {
-  height: 40px;
-}
-.button__start {
-  height: 40px;
-  background-color: var(--primary);
+.home__error {
+  color: var(--secundary);
+  font-weight: bold;
 }
 
 @media (min-width: 768px) {
