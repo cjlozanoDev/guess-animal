@@ -6,16 +6,25 @@
         <div>Nombre: {{ playerName }}</div>
       </div>
       <div class="playroom__central-panel__main">
-        <div>Hola</div>
-        <div>Adios</div>
+        <div class="playroom__central-panel__main__header">
+          <CardAnimal />
+          <AnimalRecord />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import CardAnimal from "../components/CardAnimal.vue";
+import AnimalRecord from "../components/AnimalRecord.vue";
+
 export default {
   name: "PlayRoom",
+  components: {
+    CardAnimal,
+    AnimalRecord,
+  },
   props: {
     playerName: {
       type: String,
@@ -50,6 +59,10 @@ export default {
 .playroom__central-panel__header,
 .playroom__central-panel__main {
   padding: 10px;
+}
+.playroom__central-panel__main__header {
+  display: flex;
+  gap: 2px;
 }
 
 @media (min-width: 768px) {
