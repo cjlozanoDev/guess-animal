@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Welcome from "../views/Welcome.vue";
+import PlayRoom from "../views/PlayRoom.vue";
 
 Vue.use(VueRouter);
 
@@ -9,6 +10,12 @@ const routes = [
     path: "/",
     name: "welcome",
     component: Welcome,
+  },
+  {
+    path: "/playRoom",
+    name: "PlayRoom",
+    component: PlayRoom,
+    props: true,
   },
   {
     path: "/about",

@@ -41,7 +41,7 @@
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  name: "Welcome",
   data() {
     return {
       playerName: "",
@@ -55,6 +55,14 @@ export default {
   },
   methods: {
     startPlay() {
+      if (this.playerName !== "") {
+        this.$router.push({
+          name: "PlayRoom",
+          params: {
+            playerName: this.playerName,
+          },
+        });
+      }
       this.tryPlay = true;
     },
   },
