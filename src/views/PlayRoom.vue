@@ -11,6 +11,9 @@
           <AnimalRecord />
         </div>
       </div>
+      <div class="playroom__screen-options">
+        <ScreenOptions />
+      </div>
     </div>
   </div>
 </template>
@@ -18,12 +21,14 @@
 <script>
 import CardAnimal from "../components/CardAnimal.vue";
 import AnimalRecord from "../components/AnimalRecord.vue";
+import ScreenOptions from "../components/ScreenOptions.vue";
 
 export default {
   name: "PlayRoom",
   components: {
     CardAnimal,
     AnimalRecord,
+    ScreenOptions,
   },
   props: {
     playerName: {
@@ -57,7 +62,8 @@ export default {
   justify-content: space-between;
 }
 .playroom__central-panel__header,
-.playroom__central-panel__main {
+.playroom__central-panel__main,
+.playroom__screen-options {
   padding: 10px;
 }
 .playroom__central-panel__main__header {

@@ -21,6 +21,32 @@ img {
   margin-right: auto;
 }
 .card-animal {
+  width: 80%;
+  height: 40%;
+  background: url("../assets/images/notebook.png");
+  background-repeat: repeat;
+  border: 4px solid var(--secundary);
+}
+.card-animal__container-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .card-animal {
+    width: 50%;
+  }
+}
+
+/* img {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.card-animal {
   width: 200px;
   height: 200px;
   background: url("../assets/images/notebook.png");
@@ -41,4 +67,11 @@ img {
     height: 400px;
   }
 }
+
+@media (min-width: 992px) {
+  .card-animal {
+    width: 600px;
+    height: 600px;
+  }
+} */
 </style>
