@@ -5,11 +5,11 @@
       <div class="screen-options__choices__title">
         <span> ¿Qué animal se esconde? </span>
       </div>
-      <ul class="screen-options__choices__ul">
-        <li><span v-text="toUpperCase('León')" /></li>
-        <li><span v-text="toUpperCase('Vaca')" /></li>
-        <li><span v-text="toUpperCase('Elefante')" /></li>
-        <li><span v-text="toUpperCase('Ciervo')" /></li>
+      <ul v-if="optionsToChoose.length" class="screen-options__choices__ul">
+        <li><span v-text="toUpperCase(optionsToChoose[0].name)" /></li>
+        <li><span v-text="toUpperCase(optionsToChoose[1].name)" /></li>
+        <li><span v-text="toUpperCase(optionsToChoose[2].name)" /></li>
+        <li><span v-text="toUpperCase(optionsToChoose[3].name)" /></li>
       </ul>
     </div>
   </div>
@@ -18,6 +18,12 @@
 <script>
 export default {
   name: "ScreenOptions",
+  props: {
+    optionsToChoose: {
+      type: Array,
+      default: () => [],
+    },
+  },
   methods: {
     toUpperCase(text) {
       return text.toUpperCase();

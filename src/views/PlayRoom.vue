@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="playroom__screen-options">
-        <ScreenOptions />
+        <ScreenOptions :options-to-choose="optionsToChoose" />
       </div>
     </div>
   </div>
@@ -41,6 +41,7 @@ export default {
     return {
       foundAnimal: {},
       foundsAnimalsArchive: [],
+      optionsToChoose: [],
     };
   },
   created() {
@@ -48,17 +49,51 @@ export default {
       this.$router.push({ name: "welcome" });
     } else {
       this.foundAnimalPrincipal();
-      // this.foundOptionsAnimals();
+      this.foundOptionsAnimals();
     }
   },
   methods: {
     foundAnimalPrincipal() {
       let randomNumberAnimal = this.getRandomNumber(43);
-      while (animalsList.indexOf === -1) {
+      let idAnimalRandom = animalsList[randomNumberAnimal].id;
+
+      while (this.foundsAnimalsArchive.indexOf(idAnimalRandom) >= 0) {
         randomNumberAnimal = this.getRandomNumber(43);
+        idAnimalRandom = animalsList[randomNumberAnimal].id;
       }
       this.foundAnimal = animalsList[randomNumberAnimal];
       this.foundsAnimalsArchive.push(this.foundAnimal.id);
+    },
+    foundOptionsAnimals() {
+      let optionsToChooseAux = [
+        {
+          id: this.foundAnimal.id,
+          name: this.foundAnimal.name,
+        },
+      ];
+      let foundsAnimalsArchiveAux = [];
+      let randomNumberAnimal = -1;
+
+      while (optionsToChooseAux.length < 4) {
+        randomNumberAnimal = this.getRandomNumber(43);
+        let idAnimalRandom = animalsList[randomNumberAnimal].id;
+        let animalFound = {};
+
+        while (
+          idAnimalRandom === this.foundAnimal.id ||
+          foundsAnimalsArchiveAux.indexOf(idAnimalRandom) >= 0
+        ) {
+          randomNumberAnimal = this.getRandomNumber(43);
+          idAnimalRandom = animalsList[randomNumberAnimal].id;
+        }
+        animalFound = animalsList[randomNumberAnimal];
+        foundsAnimalsArchiveAux.push(idAnimalRandom);
+        optionsToChooseAux.push({
+          id: animalFound.id,
+          name: animalFound.name,
+        });
+      }
+      this.optionsToChoose = optionsToChooseAux.sort(() => Math.random() - 0.5);
     },
     getRandomNumber(max) {
       return Math.floor(Math.random() * max) + 1;

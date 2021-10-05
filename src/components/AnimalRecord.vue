@@ -39,24 +39,4 @@ export default {
     font-size: 1.2em;
   }
 }
-/* 
-.animal-record {
-  width: 100%;
-  height: 200px;
-  background: url("../assets/images/notebook.png");
-  background-repeat: repeat;
-  border: 4px solid var(--secundary);
-  padding: 10px;
-}
-
-@media (min-width: 768px) {
-  .animal-record {
-    height: 400px;
-  }
-}
-@media (min-width: 992px) {
-  .animal-record {
-    height: 600px;
-  }
-} */
 </style>
