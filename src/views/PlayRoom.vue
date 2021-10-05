@@ -22,6 +22,7 @@
 import CardAnimal from "../components/CardAnimal.vue";
 import AnimalRecord from "../components/AnimalRecord.vue";
 import ScreenOptions from "../components/ScreenOptions.vue";
+import animalsList from "../api/index.js";
 
 export default {
   name: "PlayRoom",
@@ -36,10 +37,32 @@ export default {
       default: "",
     },
   },
+  data() {
+    return {
+      foundAnimal: {},
+      foundsAnimalsArchive: [],
+    };
+  },
   created() {
     if (this.playerName === "") {
       this.$router.push({ name: "welcome" });
+    } else {
+      this.foundAnimalPrincipal();
+      // this.foundOptionsAnimals();
     }
+  },
+  methods: {
+    foundAnimalPrincipal() {
+      let randomNumberAnimal = this.getRandomNumber(43);
+      while (animalsList.indexOf === -1) {
+        randomNumberAnimal = this.getRandomNumber(43);
+      }
+      this.foundAnimal = animalsList[randomNumberAnimal];
+      this.foundsAnimalsArchive.push(this.foundAnimal.id);
+    },
+    getRandomNumber(max) {
+      return Math.floor(Math.random() * max) + 1;
+    },
   },
 };
 </script>
