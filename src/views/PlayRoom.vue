@@ -12,7 +12,10 @@
         </div>
       </div>
       <div class="playroom__screen-options">
-        <ScreenOptions :options-to-choose="optionsToChoose" />
+        <ScreenOptions
+          :options-to-choose="optionsToChoose"
+          @animal-choose="animalChoose"
+        />
       </div>
     </div>
   </div>
@@ -44,6 +47,7 @@ export default {
       },
       foundsAnimalsArchive: [],
       optionsToChoose: [],
+      chosenOption: false,
     };
   },
   created() {
@@ -99,6 +103,15 @@ export default {
     },
     getRandomNumber(max) {
       return Math.floor(Math.random() * max) + 1;
+    },
+    animalChoose(idAnimal) {
+      this.chosenOption = true;
+
+      if (idAnimal === this.foundAnimal.id) {
+        alert(`Enhorabuena, era un/una ${this.foundAnimal.name}`);
+      } else {
+        alert("OOh!; ese no era el animal escondido");
+      }
     },
   },
 };
