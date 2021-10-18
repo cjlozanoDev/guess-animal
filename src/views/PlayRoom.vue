@@ -7,14 +7,21 @@
       </div>
       <div class="playroom__central-panel__main">
         <div class="playroom__central-panel__main__header">
-          <CardAnimal :id-animal="foundAnimal.id" />
+          <CardAnimal
+            :id-animal="foundAnimal.id"
+            :chosen-option="chosenOption"
+          />
           <AnimalRecord />
         </div>
       </div>
       <div class="playroom__screen-options">
         <ScreenOptions
           :options-to-choose="optionsToChoose"
+          :found-animal="foundAnimal"
+          :chosen-option="chosenOption"
+          :is-winner="isWinner"
           @animal-choose="animalChoose"
+          @next-animal="nextAnimal"
         />
       </div>
     </div>
@@ -48,6 +55,7 @@ export default {
       foundsAnimalsArchive: [],
       optionsToChoose: [],
       chosenOption: false,
+      isWinner: false,
     };
   },
   created() {
@@ -106,12 +114,18 @@ export default {
     },
     animalChoose(idAnimal) {
       this.chosenOption = true;
-
       if (idAnimal === this.foundAnimal.id) {
-        alert(`Enhorabuena, era un/una ${this.foundAnimal.name}`);
-      } else {
-        alert("OOh!; ese no era el animal escondido");
+        this.isWinner = true;
       }
+    },
+    nextAnimal() {
+      this.chosenOption = false;
+      this.isWinner = false;
+      this.foundAnimal.id = 0;
+      setTimeout(() => {
+        this.foundAnimalPrincipal();
+        this.foundOptionsAnimals();
+      }, 1000);
     },
   },
 };

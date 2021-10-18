@@ -5,7 +5,10 @@
       <div class="screen-options__choices__title">
         <span> ¿Qué animal se esconde? </span>
       </div>
-      <ul v-if="optionsToChoose.length" class="screen-options__choices__ul">
+      <ul
+        v-if="optionsToChoose.length && !chosenOption"
+        class="screen-options__choices__ul"
+      >
         <li>
           <span
             class="screen-options__choices__ul__choice"
@@ -35,6 +38,21 @@
           />
         </li>
       </ul>
+      <div v-if="chosenOption">
+        <p v-if="isWinner">
+          ¡Enhorabuena! era
+          {{ foundAnimal.genreArticle === "m" ? "un" : "una" }}
+          {{ foundAnimal.name }}
+        </p>
+        <p v-else>
+          '¡OOH no!, se nos ha escapado. Era
+          {{ foundAnimal.genreArticle === "m" ? "un" : "una" }}
+          {{ foundAnimal.name }}
+        </p>
+        <div>
+          <button @click="nextAnimal">Seguir jugando</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,9 +61,21 @@
 export default {
   name: "ScreenOptions",
   props: {
+    foundAnimal: {
+      type: Object,
+      default: () => {},
+    },
     optionsToChoose: {
       type: Array,
       default: () => [],
+    },
+    chosenOption: {
+      type: Boolean,
+      default: false,
+    },
+    isWinner: {
+      type: Boolean,
+      default: true,
     },
   },
   methods: {
@@ -54,6 +84,9 @@ export default {
     },
     animalChoose(idAnimal) {
       this.$emit("animal-choose", idAnimal);
+    },
+    nextAnimal() {
+      this.$emit("next-animal");
     },
   },
 };

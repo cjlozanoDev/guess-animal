@@ -24,7 +24,9 @@ export default {
       if (this.idAnimal === 0) {
         return "";
       }
-      return `${process.env.VUE_APP_URL_ANIMAL_API}/${this.idAnimal}.png?raw=true`;
+      return `${process.env.VUE_APP_URL_ANIMAL_API}/${
+        this.idAnimal
+      }.png?raw=true?${Date.now()}`;
     },
     classImage() {
       return {
@@ -42,7 +44,8 @@ img {
   margin-right: auto;
 }
 .card-animal {
-  width: 80%;
+  min-width: 44%;
+  max-width: 44%;
   height: 40%;
   background: url("../assets/images/notebook.png");
   background-repeat: repeat;
@@ -61,7 +64,8 @@ img {
 
 @media (min-width: 768px) {
   .card-animal {
-    width: 50%;
+    min-width: 40%;
+    max-width: 40%;
   }
 }
 
