@@ -7,7 +7,7 @@
       </div>
       <div class="playroom__central-panel__main">
         <div class="playroom__central-panel__main__header">
-          <CardAnimal />
+          <CardAnimal :id-animal="foundAnimal.id" />
           <AnimalRecord />
         </div>
       </div>
@@ -39,7 +39,9 @@ export default {
   },
   data() {
     return {
-      foundAnimal: {},
+      foundAnimal: {
+        id: 0,
+      },
       foundsAnimalsArchive: [],
       optionsToChoose: [],
     };

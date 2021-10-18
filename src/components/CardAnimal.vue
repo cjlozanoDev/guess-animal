@@ -1,9 +1,7 @@
 <template>
   <div class="card-animal">
     <div class="card-animal__container-image">
-      <img
-        src="https://github.com/devcjlozano/apiGuessAnimal/blob/master/sprites/1.png?raw=true"
-      />
+      <img :class="classImage" :src="urlAnimal" />
     </div>
   </div>
 </template>
@@ -11,6 +9,29 @@
 <script>
 export default {
   name: "CardAnimal",
+  props: {
+    idAnimal: {
+      type: Number,
+      default: 0,
+    },
+    chosenOption: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    urlAnimal() {
+      if (this.idAnimal === 0) {
+        return "";
+      }
+      return `${process.env.VUE_APP_URL_ANIMAL_API}/${this.idAnimal}.png?raw=true`;
+    },
+    classImage() {
+      return {
+        "animal-image-hidden": !this.chosenOption,
+      };
+    },
+  },
 };
 </script>
 
@@ -33,6 +54,9 @@ img {
   align-items: center;
   padding: 12px;
   height: 100%;
+}
+.animal-image-hidden {
+  filter: brightness(0);
 }
 
 @media (min-width: 768px) {
