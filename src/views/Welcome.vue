@@ -25,9 +25,9 @@
             v-model="playerName"
             placeholder="Escribe tu nombre"
           />
-          <button @click="startPlay" class="button-guess-animal">
+          <Button :onclick="startPlay" class="button-guess-animal">
             <span> EMPEZAR A JUGAR </span>
-          </button>
+          </Button>
         </div>
         <div v-if="nameEmpty" class="home__error">
           <p>Para poder jugar, tienes que escribir tu nombre</p>
@@ -38,10 +38,14 @@
 </template>
 
 <script>
+import Button from "../components/Button.vue";
 // @ is an alias to /src
 
 export default {
   name: "Welcome",
+  components: {
+    Button,
+  },
   data() {
     return {
       playerName: "",

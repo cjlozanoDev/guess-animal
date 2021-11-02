@@ -27,8 +27,8 @@ body {
   font-size: 0.8em;
 }
 .button-guess-animal {
-  background-color: var(--primary);
-  border: 2px solid var(--secundary);
+  /* background-color: var(--primary);
+  border: 2px solid var(--secundary); */
   cursor: pointer;
 }
 

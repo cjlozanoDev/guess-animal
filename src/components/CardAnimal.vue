@@ -44,9 +44,9 @@ img {
   margin-right: auto;
 }
 .card-animal {
+  height: auto;
   min-width: 44%;
   max-width: 44%;
-  height: 40%;
   background: url("../assets/images/notebook.png");
   background-repeat: repeat;
   border: 4px solid var(--secundary);

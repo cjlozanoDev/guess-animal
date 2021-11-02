@@ -50,7 +50,9 @@
           {{ foundAnimal.name }}
         </p>
         <div>
-          <button @click="nextAnimal">Seguir jugando</button>
+          <Button :onclick="nextAnimal" type="next" class="button-guess-animal">
+            <span> SEGUIR JUGANDO </span>
+          </Button>
         </div>
       </div>
     </div>
@@ -58,8 +60,13 @@
 </template>
 
 <script>
+import Button from "./Button.vue";
+
 export default {
   name: "ScreenOptions",
+  components: {
+    Button,
+  },
   props: {
     foundAnimal: {
       type: Object,
